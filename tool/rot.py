@@ -2,9 +2,16 @@ import re
 
 def rot(n, str):
     arr = []
-    pattern = r"[a-zA-Z]"
     for s in str:
-        if re.match(pattern , s):
-            s = chr(ord(s) - n)
-        arr.append(s)
+        x = ord(s)
+        if 65 < x & x < 90:
+            x = x + n
+            if x > 90: x = x - 26
+
+        elif 97 < x & x < 122:
+            x = x + n
+            if x > 122: x = x - 26
+
+        arr.append(chr(x))
+
     return "".join(arr)
